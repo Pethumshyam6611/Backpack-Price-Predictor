@@ -30,5 +30,3 @@ This project was inspired by a **Kaggle competition** and built with **Python, R
 
 ---
 
-## 📁 Project Structure
-
