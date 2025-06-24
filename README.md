@@ -4,8 +4,6 @@
 An intelligent, machine learning-powered web app that predicts backpack prices based on user-selected features like brand, material, number of compartments, and more.  
 This project was inspired by a **Kaggle competition** and built with **Python, Random Forest**, and a sleek **Flask + Bootstrap frontend**.
 
-![Backpack](https://img.icons8.com/external-flat-juicy-fish/64/000000/external-backpack-back-to-school-flat-flat-juicy-fish.png)
-
 ---
 
 ## 🚀 Live Features
