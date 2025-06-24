@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backpack Price Prediction</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header Styling */
+        header {
+            background: #222;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 32px;  /* Increased size */
+        }
+
+        header p {
+            margin: 8px 0;
+            font-size: 18px;  /* Increased size */
+            color: #bbb;
+        }
+
+        /* Container for Form */
+        .container {
+            width: 70%;  /* Increased width */
+            margin: 40px auto;
+            background: #111;
+            padding: 30px;  /* Increased padding */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Form Styling */
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .form-group {
+            width: 80%;
+            margin: 12px 0;  /* Increased margin */
+            text-align: left;
+        }
+
+        label {
+            font-size: 18px;  /* Increased size */
+            display: block;
+            margin-bottom: 8px;
+            color: #ddd;
+        }
+
+        select, input[type="number"] {
+            width: 100%;
+            padding: 12px;  /* Increased padding */
+            border: 1px solid #444;
+            border-radius: 5px;
+            background: #222;
+            color: white;
+            font-size: 16px;  /* Increased size */
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 20px;  /* Increased gap */
+            margin-top: 8px;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+        }
+
+        input[type="radio"] {
+            width: 20px;  /* Increased size */
+            height: 20px;  /* Increased size */
+            margin-right: 8px;
+        }
+
+        button {
+            margin-top: 30px;  /* Increased margin */
+            padding: 15px 30px;  /* Increased padding */
+            font-size: 20px;  /* Increased size */
+            font-weight: bold;
+            color: #000;
+            background-color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: #ddd;
+        }
+
+        /* Prediction Result */
+        #prediction_result {
+            margin-top: 25px;
+            font-size: 24px;  /* Increased size */
+            font-weight: bold;
+            color: #ddb000;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🎒 Back Pack Price Predicting Application</h1>
+        <p>Welcome! Enter the backpack details to predict its price.</p>
+    </header>
+
+    <div class="container">
+        <h2>Backpack Price Prediction</h2>
+        <form action="/predict" method="post">
+            <div class="form-group">
+                <label for="Brand">Brand:</label>
+                <select name="Brand" id="Brand" required>
+                    <option value="" disabled selected>Select a brand</option>
+                    <option value="Under Armour">Under Armour</option>
+                    <option value="Adidas">Adidas</option>
+                    <option value="Nike">Nike</option>
+                    <option value="Puma">Puma</option>
+                    <option value="Jansport">Jansport</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="Material">Material:</label>
+                <select name="Material" id="Material" required>
+                    <option value="" disabled selected>Select a material</option>
+                    <option value="Polyester">Polyester</option>
+                    <option value="Leather">Leather</option>
+                    <option value="Nylon">Nylon</option>
+                    <option value="Canvas">Canvas</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="Size">Size:</label>
+                <select name="Size" id="Size" required>
+                    <option value="" disabled selected>Select a size</option>
+                    <option value="Small">Small</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Large">Large</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="Laptop Compartment">Laptop Compartment:</label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="laptop_yes" name="Laptop Compartment" value="Yes" required>
+                        <label for="laptop_yes">Yes</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="laptop_no" name="Laptop Compartment" value="No">
+                        <label for="laptop_no">No</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="Waterproof">Waterproof:</label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="waterproof_yes" name="Waterproof" value="Yes" required>
+                        <label for="waterproof_yes">Yes</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="waterproof_no" name="Waterproof" value="No">
+                        <label for="waterproof_no">No</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="Style">Style:</label>
+                <select name="Style" id="Style" required>
+                    <option value="" disabled selected>Select a style</option>
+                    <option value="Messenger">Messenger</option>
+                    <option value="Tote">Tote</option>
+                    <option value="Backpack">Backpack</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="Color">Color:</label>
+                <select name="Color" id="Color" required>
+                    <option value="" disabled selected>Select a color</option>
+                    <option value="Pink">Pink</option>
+                    <option value="Gray">Gray</option>
+                    <option value="Blue">Blue</option>
+                    <option value="Red">Red</option>
+                    <option value="Black">Black</option>
+                    <option value="Green">Green</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="Compartments">Compartments:</label>
+                <input type="number" name="Compartments" id="Compartments" min="1" required>
+            </div>
+
+            <div class="form-group">
+                <label for="Weight Capacity">Weight Capacity (kg):</label>
+                <input type="number" step="0.1" name="Weight Capacity (kg)" id="Weight Capacity" min="0.1" required>
+            </div>
+
+            <button type="submit">Predict Price</button>
+        </form>
+
+        <h3 id="prediction_result"></h3>
+    </div>
+
+    <script>
+        document.querySelector("form").onsubmit = async function(event) {
+            event.preventDefault();
+            let formData = new FormData(event.target);
+            let response = await fetch("/predict", {
+                method: "POST",
+                body: formData
+            });
+            let result = await response.json();
+            document.getElementById("prediction_result").innerText = "Predicted Price: $" + result.predicted_price;
+        };
+    </script>
+
+</body>
+</html>
